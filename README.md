@@ -59,40 +59,68 @@ More information is only accessible by people who are already enrolled in Term 2
 of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/e8235395-22dd-4b87-88e0-d108c5e5bbf4/concepts/6a4d8d42-6a04-4aa6-b284-1697c0fd6562)
 for instructions and the project rubric.
 
-## Hints!
 
-* You don't have to follow this directory structure, but if you do, your work
-  will span all of the .cpp files here. Keep an eye out for TODOs.
 
-## Call for IDE Profiles Pull Requests
+<br/><br/>
+<h1 align="center"> Addressing Project Rubric </h1>
 
-Help your fellow students!
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+<h2 align="center">Compilation </h2>
 
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. Similarly, we omitted IDE profiles in order to we ensure
-that students don't feel pressured to use one IDE or another.
+<em>Code is compiling without errors with cmake and make</em>
 
-However! I'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE that you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
+<h2 align="center">Implementation </h2>
 
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
+<em>Base algorithm follows what's presented in the lessor. hyperparameter tuning/optimization is done manually. TODO section in the source code is addressed.</em>
 
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
+<h2 align="center">Reflection </h2>
+<br/><br/>
 
-Frankly, I've never been involved in a project with multiple IDE profiles
-before. I believe the best way to handle this would be to keep them out of the
-repo root to avoid clutter. My expectation is that most profiles will include
-instructions to copy files to a new location to get picked up by the IDE, but
-that's just a guess.
+<em>Describe the effect each of the P, I, D components had in your implementation.</em>
 
-One last note here: regardless of the IDE used, every submitted project must
-still be compilable with cmake and make./
+A proportional–integral–derivative controller (PID controller or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name. <== **From Wikipedia**
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+![](./results/PID_en.svg.png)
+
+**Proportional**
+
+The obvious method is proportional control: control input will be set in proportion to the existing cross track error. However, this method is unstable if the proportional gain is too high.
+
+**Integral**
+
+An integral term increases action in relation not only to the error but also the time for which it has persisted. Thus it is very effective in eleminating the systematic bias as explained in the lecture.
+
+**Derivative**
+
+A derivative term does not consider the error (meaning it cannot bring it to zero), but the rate of change of error, trying to bring this rate to zero. It aims at flattening the error trajectory into a horizontal line, thus reducing the overshoot(incase of the simulator not going off the track).
+
+<br/><br/>
+
+<em>Describe how the final hyperparameters were chosen.</em>
+
+Parameters are chosen in trial and error method by the intuitive understanding of the usage of different parameter values.
+
+Initial values for the gains are set by the intuitive values from the PID implementation lecture from sebastian.
+
+Then it was changed continuously upto the point where the car can finish a lap successfully and safely.
+
+some of the iteration values are given below.
+
+| kp  | ki | kd  | Result |
+| ------------- | ------------- | ------------- | ------------- |
+| 0.1  | 0.001  | 1.8  | Fail  |
+| 0.15  | 0.001  | 1.8  | Fail  |
+| 0.12  | 0.001  | 1.8  | Fail  |
+| 0.09  | 0.001  | 1.8  | Pass  |
+
+`Note that I've modified the throttle value between 0.18 ~ 0.3 for the above combinations and finally set it to constant value of `0.18` to make it stable.`
+
+
+<h2 align="center">Simulation </h2>
+
+<em>The vehicle successfully drives a lap around the track.</em>
+
+Simulation video is recorded and attached in the results directory. For the sake of brevity '.gif' is shown below.
+
+![](./results/PID_Final_Result_1.5MB.gif)
 
