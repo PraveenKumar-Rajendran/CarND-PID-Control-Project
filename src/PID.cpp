@@ -51,7 +51,7 @@ double PID::ControlInput() {
    * TODO: Calculate control input for steering using PID
    */
   
-  double control_input = -Kp * p_error - Kd * d_error - Ki * i_error;
+  double control_input = - TotalError();
 // steering value must be between [-1, 1]
   control_input = control_input < -1 ? -1 : control_input;  // For the lower limit
   control_input = control_input > 1 ? 1 : control_input; // For the upper limit
