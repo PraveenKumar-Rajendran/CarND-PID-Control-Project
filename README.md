@@ -112,6 +112,11 @@ Among many iterations experimented, four combination values are given below.
 | 0.15  | 0.001  | 1.8  | Fail  |
 | 0.12  | 0.001  | 1.8  | Fail  |
 | 0.09  | 0.001  | 1.8  | Pass  |
+| 0.1  | 0.001  | 1.8  | Pass  |
+| 0.13  | 0.001  | 1.8  | good  |
+| 0.16  | 0.001  | 1.8  | better  |
+
+
 
 `Note that I've modified the throttle value between 0.18 ~ 0.3 for the above combinations and finally set it to constant value of `0.18` to make it stable.`
 
@@ -120,7 +125,7 @@ Among many iterations experimented, four combination values are given below.
 
 <em>The vehicle successfully drives a lap around the track.</em>
 
-[Simulation video](./results/PID_Final_Result.mp4) is recorded and attached in the results directory. '.gif' file is shown below.
+[Simulation video](./results/PID_Final_Result_02.webm) is recorded and attached in the results directory. '.gif' file for one of the experimented parameter combinations is shown below.
 
 ![](./results/PID_Final_Result_1.5MB.gif)
 
