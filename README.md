@@ -71,7 +71,7 @@ for instructions and the project rubric.
 
 <h2 align="center">Implementation </h2>
 
-<em>Base algorithm follows what's presented in the lessor. hyperparameter tuning/optimization is done manually. TODO section in the source code is addressed.</em>
+<em>Base algorithm follows what's presented in the lessor. hyperparameter tuning/optimization is done manually.</em>
 
 <h2 align="center">Reflection </h2>
 <br/><br/>
@@ -100,11 +100,11 @@ A derivative term does not consider the error (meaning it cannot bring it to zer
 
 Parameters are chosen in trial and error method by the intuitive understanding of the usage of different parameter values.
 
-Initial values for the gains are set by the intuitive values from the PID implementation lecture from sebastian.
+Initial values for the gains are set by the intuitive values from the PID implementation lecture from sebastian. Those values are then tuned to give the desired performance for the given problem in the simulator environment.
 
 Then it was changed continuously upto the point where the car can finish a lap successfully and safely.
 
-some of the iteration values are given below.
+Among many iterations experimented, four combination values are given below.
 
 | kp  | ki | kd  | Result |
 | ------------- | ------------- | ------------- | ------------- |
@@ -120,7 +120,7 @@ some of the iteration values are given below.
 
 <em>The vehicle successfully drives a lap around the track.</em>
 
-Simulation video is recorded and attached in the results directory. For the sake of brevity '.gif' is shown below.
+[Simulation video](./results/PID_Final_Result.mp4) is recorded and attached in the results directory. '.gif' file is shown below.
 
 ![](./results/PID_Final_Result_1.5MB.gif)
 
